@@ -1,0 +1,382 @@
+.themeBg {
+    background: #eeeeee;
+}
+.themeCol{
+    color: #607D8B;
+}
+.spinner-border{
+    border-color: #cecece;
+    border-right-color: transparent;
+}
+
+/*start login + register*/
+.loginBlock {
+    position: relative;
+    min-height: 100vh;
+}
+.loginBlock > div{
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 0 20px 0 #dddddd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #009688;
+    padding: 70px;
+    border-radius: 5px;
+}
+.loginBlock .right{
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 0 30px 0 0;
+}
+.loginBlock h2{
+    font-size: 30px;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    color: white;
+    text-align: center;
+}
+.loginBlock input{
+    margin-bottom: 10px;
+    border-radius: 0;
+    box-shadow: none !important;
+    font-size: 14px;
+    padding: 10px 0;
+    height: auto;
+    border: 0 !important;
+    border-bottom: 1px solid white !important;
+    background: transparent !important;
+    color: white !important;
+}
+.loginBlock input::-webkit-input-placeholder {
+    color: white;
+}
+.loginBlock .text-danger{
+    color: black !important;
+}
+.loginBlock .text-success{
+    color: white !important;
+}
+.loginBlock p{
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.loginBlock button{
+    font-size: 14px;
+    border-radius: 30px;
+    box-shadow: none !important;
+    background: white;
+    margin: 20px 0 0 0;
+    padding: 10px 30px;
+}
+.loginFooter{
+    text-align: center;
+}
+.loginFooter > a{
+    display: block;
+    margin: 20px 0 0 0;
+    color: white !important;
+    text-decoration: none;
+    font-size: 14px;
+}
+.formStatus{
+    text-transform: capitalize;
+}
+/*end login + register*/
+
+/*start app*/
+.app {
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    position: relative;
+}
+.app:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: #009688;
+    z-index: -1;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    background: white;
+    box-shadow: 0 0 20px -8px #474747;
+    border-radius: 5px;
+}
+.leftWrapper{
+    display: inline-block;
+    width: 350px;
+    height: 100%;
+    vertical-align: top;
+    background: white;
+}
+.top{
+    padding: 10px 10px 10px 25px;
+    position: relative;
+}
+.backButton{
+    position: absolute;
+    left: 0;
+    background: transparent;
+    border: 0;
+    font-size: 15px;
+    padding: 23px 17px;
+    top: 0;
+    color: white;
+    display: none;
+    outline: 0 !important;
+}
+.userIcon{
+    float: left;
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+    object-fit: cover;
+    padding: 2px;
+}
+.menu{
+    text-align: right;
+    position: relative;
+}
+button.dropdown {
+    background: transparent;
+    border: 0;
+    padding: 10px 20px;
+    outline: 0;
+    font-size: 20px;
+    color: #7f7f7f;
+}
+.dropDownMenu{
+    position: absolute;
+    right: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 20px -8px #b5b5b5;
+    padding: 10px 25px;
+    border-radius: 2px;
+    top: 40px;
+    display: none;
+    z-index: 1;
+}
+.dropDownMenu button{
+    background: transparent;
+    border: 0;
+    padding: 5px 0;
+    outline: 0;
+    font-size: 14px;
+    color: black;
+}
+.search{
+    padding: 0 25px 10px;
+    position: relative;
+}
+.search input{
+    width: 100%;
+    border-radius: 0;
+    border: 0;
+    outline: 0;
+    padding: 10px 40px;
+    font-size: 14px;
+}
+.search i{
+    position: absolute;
+    top: 13px;
+    left: 35px;
+    color: #929292;
+}
+.users{
+    height: calc(100vh - 220px);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.users::-webkit-scrollbar{
+    width: 5px;
+    height: 0;
+}
+.users::-webkit-scrollbar-track{
+    background: white;
+}
+.users::-webkit-scrollbar-thumb{
+    background: #ddd;
+}
+.users::-webkit-scrollbar-thumb:hover{
+    background: #ddd;
+}
+.users .item{
+    padding: 20px 20px 0;
+    cursor: pointer;
+}
+.details {
+    margin: 0 0 0 60px;
+    border-bottom: 1px solid #d7d7d7;
+    padding: 7px 0 7px 0;
+}
+.details h4{
+    font-size: 14px;
+    margin: 0 0 2px;
+    color: #2e2e2e;
+}
+.details p{
+    margin: 0;
+    font-size: 13px;
+    color: #727272;
+}
+.rightWrapper{
+    display: inline-block;
+    width: calc(100% - 350px);
+    border-left: 1px solid #d7d7d7;
+}
+.name h4{
+    font-size: 14px;
+    margin: 0 0 2px;
+}
+.name p{
+    margin: 0;
+    font-size: 13px;
+}
+.name {
+    position: absolute;
+    top: 5px;
+    text-align: left;
+    left: 60px;
+}
+.msg{
+    position: relative;
+}
+.msgInput{
+    padding: 10px 25px;
+    background: white;
+    border-top: 1px solid #d7d7d7;
+}
+.msgBox{
+    height: calc(100vh - 232px);
+    background: white;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 25px;
+    font-size: 14px;
+}
+.msgBox::-webkit-scrollbar{
+    width: 5px;
+    height: 0;
+}
+.msgBox::-webkit-scrollbar-track{
+    background: white;
+}
+.msgBox::-webkit-scrollbar-thumb{
+    background: #ddd;
+}
+.msgBox::-webkit-scrollbar-thumb:hover{
+    background: #ddd;
+}
+.msgInput form{
+    position: relative;    
+}
+.msgInput input{
+    font-size: 14px;
+    padding: 10px 60px 10px 20px;
+    border: 0;
+    width: 100%;
+    outline: 0;
+    background: white;
+}
+.msgInput button {
+    position: absolute;
+    right: 0;
+    border: 0;
+    border-radius: 50%;
+    font-size: 15px;
+    padding: 10px 15px;
+    outline: 0;
+    color: white;
+    background: #009688;
+}
+.leftMsg{
+    width: 80%;
+    border: 1px solid #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.rightMsg{
+    width: 80%;
+    margin: 10px 0 10px auto;
+    padding: 15px;
+    border-radius: 5px;
+    background: #e8e8e8;
+}
+/*end app*/
+
+@media (max-width: 992px){
+    .app {
+        padding: 0;
+    }
+    .wrapper {
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .msgBox {
+        height: calc(100vh - 133px);
+    }
+}
+@media (max-width: 768px){
+    .leftWrapper {
+        width: 270px;
+    }
+    .rightWrapper {
+        width: calc(100% - 270px);
+    }
+}
+@media (max-width: 576px){
+    .wrapper {
+        display: block;
+        position: relative;
+    }
+    .leftWrapper {
+        width: 100%;
+        display: block;
+    }
+    .rightWrapper {
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .msgInput {
+        padding: 10px;
+    }
+    .rightWrapper .top{
+        padding-left: 45px;
+    }
+    .backButton{
+        display: inline-block;
+    }
+    .themeBg {
+        background: #009688;
+    }
+    .name {
+        color: white;
+    }
+    button.dropdown {
+        color: #ffffff;
+    }
+    .loginBlock > div {
+        max-width: 100%;
+        position: static;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+        background: #009688;
+        padding: 40px;
+    }
+}
