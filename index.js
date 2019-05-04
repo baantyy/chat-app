@@ -28,7 +28,7 @@ const io = socket(server)
 const users = {}
 
 function check_key(data){
-	var value = ''
+	var value = null
 	for(var key in users){
         if(key == data){
             value = users[key]
@@ -44,20 +44,20 @@ io.on("connection", function(socket){
     socket.on('addUser', function(username){
 		socket.username = username
         users[username] = socket.id
-        
-        //all users
-        console.log(Object.keys(users), Object.values(users))
+        //console.log(Object.keys(users), Object.values(users))
     })
 
     //send message
     socket.on("sendMessage", (data) => {
         const userSocketId = check_key(data.to)
-        io.in(userSocketId).emit("newMessage", data)
+        if(userSocketId){            
+            io.in(userSocketId).emit("newMessage", data)
+        }
     })
 
     //remove user
-    // socket.on('disconnect', function(){
-	// 	delete users[socket.username]
-    // })
+    socket.on('logout', function(username){
+        delete users[username]
+    })
     
 })

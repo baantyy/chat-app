@@ -6,9 +6,10 @@ import RightMsg from './rightMsg'
 import RightInput from './rightInput'
 
 import { sendMessage } from '../../actions/chat'
+import { socket_url } from '../../config'
 
 import io from 'socket.io-client'
-const socket = io('/')
+const socket = io(socket_url)
 
 class rightWrapper extends React.Component {
 
