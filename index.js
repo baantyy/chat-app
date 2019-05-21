@@ -44,7 +44,7 @@ io.on("connection", function(socket){
     socket.on('addUser', function(username){
 		socket.username = username
         users[username] = socket.id
-        //console.log(Object.keys(users), Object.values(users))
+        console.log(Object.keys(users), Object.values(users))
     })
 
     //send message

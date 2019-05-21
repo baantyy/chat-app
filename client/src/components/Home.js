@@ -1,8 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import io from 'socket.io-client'
 
 import LeftWrapper from './chat/leftWrapper'
 import RightWrapper from './chat/rightWrapper'
+import { socket_url } from '../config'
+
+const socket = io(socket_url)
 
 class Home extends React.Component {
     constructor(props){
@@ -23,8 +27,8 @@ class Home extends React.Component {
                 { this.state.isLoaded &&
                     <div className="app">
                         <div className="wrapper">
-                            <LeftWrapper props={this.props} />
-                            <RightWrapper />
+                            <LeftWrapper props={this.props} socket={socket} />
+                            <RightWrapper socket={socket} />
                         </div>
                     </div>
                 }

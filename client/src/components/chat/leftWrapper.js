@@ -10,7 +10,7 @@ class leftWrapper extends React.Component{
     render(){
         return (
             <div className="leftWrapper">
-                <LeftTop props={this.props.props} />
+                <LeftTop props={this.props.props} socket={this.props.socket} />
                 <LeftSearch />
                 <LeftUsers />
             </div>

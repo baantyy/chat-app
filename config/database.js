@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
-const { db_url } = require("./config")
 mongoose.Promise = global.Promise
-
-mongoose.connect(db_url.dev,{
+// "mongodb://localhost:27017/chat-app"
+// "mongodb://banty:qwe123@ds149706.mlab.com:49706/heroku_q9zqqjvz"
+mongoose.connect("mongodb://banty:qwe123@ds149706.mlab.com:49706/heroku_q9zqqjvz",{
         useNewUrlParser: true,
         useCreateIndex: true
     })

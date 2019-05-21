@@ -4,10 +4,6 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 
 import { removeUser } from '../../actions/user'
-import { socket_url } from '../../config'
-
-import io from 'socket.io-client'
-const socket = io(socket_url)
 
 class leftTop extends React.Component{
 
@@ -31,7 +27,7 @@ class leftTop extends React.Component{
                 this.props.props.history.push("/login")
                 this.props.dispatch(removeUser())
                 localStorage.removeItem('user')
-                socket.emit("logout", this.props.user.auth.id)
+                this.props.socket.emit("logout", this.props.user.auth.id)
             })
     }
 

@@ -6,17 +6,13 @@ import RightMsg from './rightMsg'
 import RightInput from './rightInput'
 
 import { sendMessage } from '../../actions/chat'
-import { socket_url } from '../../config'
-
-import io from 'socket.io-client'
-const socket = io(socket_url)
 
 class rightWrapper extends React.Component {
 
     componentDidMount(){        
-        socket.emit("addUser", this.props.user.auth.id)        
+        this.props.socket.emit("addUser", this.props.user.auth.id)        
         const self = this
-        socket.on("newMessage", function(data){
+        this.props.socket.on("newMessage", function(data){
             data.from === self.props.chat.id && data.to === self.props.user.auth.id && self.props.dispatch(sendMessage(data.message))
         })
     }
@@ -28,8 +24,8 @@ class rightWrapper extends React.Component {
                     <React.Fragment>
                         <RightTop />
                         <div className="msg">
-                            <RightMsg socket={socket} />
-                            <RightInput socket={socket} />
+                            <RightMsg socket={this.props.socket} />
+                            <RightInput socket={this.props.socket} />
                         </div>
                     </React.Fragment>
                 }

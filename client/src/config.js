@@ -1,2 +1,1 @@
-export const socket_url = 'http://localhost:3005'
-//export const socket_url = '/'
+export const socket_url = process.env.NODE_ENV !== 'production' ? "http://localhost:3005" : "/"
