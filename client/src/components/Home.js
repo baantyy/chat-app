@@ -20,7 +20,10 @@ class Home extends React.Component {
     componentDidMount(){
         this.props.user.auth ? this.setState(() => ({ isLoaded: true})) : this.props.history.push("/login")
         document.title = "Chat Room"
-        window.addEventListener('resize', this.updateScreen) 
+        window.addEventListener('resize', this.updateScreen)         
+        setInterval(() => {
+            socket.emit("addUser", this.props.user.auth.id)
+        }, 1000)
     }
 
     componentWillUnmount() {
