@@ -20,7 +20,7 @@ class rightMsg extends React.Component{
 
     render(){
         return (
-            <div className="msgBox" ref={(div) => { this.messageList = div }}>
+            <div className="msgBox" ref={(div) => { this.messageList = div }} style={{"height": this.props.screen.height - (this.props.screen.width <= 992 ? 133 : 232)}}>
                 {
                     this.props.chat.messages.map(msg => {
                         return (
@@ -38,7 +38,8 @@ class rightMsg extends React.Component{
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        chat: state.chat
+        chat: state.chat,
+        screen: state.screen
     }
 }
 
