@@ -27,7 +27,7 @@ class leftTop extends React.Component{
                 this.props.props.history.push("/login")
                 this.props.dispatch(removeUser())
                 localStorage.removeItem('user')
-                this.props.socket.emit("logout", this.props.user.auth.id)
+                //this.props.socket.emit("logout", this.props.user.auth.id)
             })
     }
 

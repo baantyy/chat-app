@@ -22,7 +22,7 @@ class rightWrapper extends React.Component {
             <div className="rightWrapper">        
                 { this.props.chat.isLoaded &&
                     <React.Fragment>
-                        <RightTop />
+                        <RightTop socket={this.props.socket} />
                         <div className="msg">
                             <RightMsg socket={this.props.socket} />
                             <RightInput socket={this.props.socket} />

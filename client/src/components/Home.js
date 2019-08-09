@@ -18,7 +18,7 @@ class Home extends React.Component {
     }
 
     componentDidMount(){
-        this.props.user.auth ? this.setState(() => ({ isLoaded: true})) : this.props.history.push("/login")
+        this.props.user.auth ? this.setState(() => ({ isLoaded: true })) : this.props.history.push("/login")
         document.title = "Chat Room"
         window.addEventListener('resize', this.updateScreen)
     }

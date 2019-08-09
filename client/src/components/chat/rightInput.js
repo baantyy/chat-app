@@ -16,9 +16,24 @@ class rightInput extends React.Component{
 
     handleChange = (e) => {
         e.persist()
-        this.setState(() => ({
-            message: e.target.value
-        }))
+        const value = e.target.value
+        const { socket, user: { auth: { id }}, chat } = this.props
+        this.setState({ message: value })
+        if(value){
+            socket.emit("typing", {
+                time: new Date(),
+                from: id,
+                to: chat.id,
+                status: true
+            })
+        }else{
+            socket.emit("typing", {
+                time: new Date(),
+                from: id,
+                to: chat.id,
+                status: false
+            })
+        }
     }
 
     handleSubmit = (e) => {
@@ -46,6 +61,12 @@ class rightInput extends React.Component{
                     from: this.props.user.auth.id,
                     to: this.props.chat.id,
                     message: res.data
+                })
+                this.props.socket.emit("typing", {
+                    time: new Date(),
+                    from: this.props.user.auth.id,
+                    to: this.props.chat.id,
+                    status: false
                 })
             })
             .catch(err => {

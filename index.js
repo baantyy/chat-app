@@ -37,14 +37,14 @@ function check_key(data){
 	return value
 }
 
-io.on("connection", function(socket){
+io.on("connection", (socket) => {
     console.log('socket id', socket.id)
 
     //add new user
-    socket.on('addUser', function(username){
+    socket.on('addUser', (username) => {
 		socket.username = username
         users[username] = socket.id
-        console.log(Object.keys(users), Object.values(users))
+        console.log('addUser', users)
     })
 
     //send message
@@ -56,8 +56,15 @@ io.on("connection", function(socket){
     })
 
     //remove user
-    socket.on('logout', function(username){
-        delete users[username]
+    // socket.on('logout', function(username){
+    //     delete users[username]
+    // })
+
+    //typing
+    socket.on("typing", (data) => {
+        const userSocketId = check_key(data.to)
+        if(userSocketId){
+            io.in(userSocketId).emit("showTyping", data)
+        }
     })
-    
 })
