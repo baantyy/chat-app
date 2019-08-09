@@ -9,7 +9,7 @@ import { sendMessage } from '../../actions/chat'
 
 class rightWrapper extends React.Component {
 
-    componentDidMount(){       
+    componentDidMount(){
         this.props.socket.emit("addUser", this.props.user.auth.id)
         const self = this
         this.props.socket.on("newMessage", function(data){
@@ -19,7 +19,7 @@ class rightWrapper extends React.Component {
 
     render(){
         return (
-            <div className="rightWrapper">        
+            <div className="rightWrapper">
                 { this.props.chat.isLoaded &&
                     <React.Fragment>
                         <RightTop socket={this.props.socket} />

@@ -6,72 +6,72 @@ import uuid4 from 'uuid/v4'
 import { sendMessage } from '../../actions/chat'
 
 class rightInput extends React.Component{
-
     constructor(props){
         super(props)
         this.state = {
-            message: ''
+            message: '',
+            typing: ''
         }
     }
 
     handleChange = (e) => {
         e.persist()
         const value = e.target.value
-        const { socket, user: { auth: { id }}, chat } = this.props
         this.setState({ message: value })
-        if(value){
-            socket.emit("typing", {
-                time: new Date(),
-                from: id,
-                to: chat.id,
-                status: true
-            })
-        }else{
-            socket.emit("typing", {
-                time: new Date(),
-                from: id,
-                to: chat.id,
-                status: false
-            })
-        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-
-        const formData = {
-            message: this.state.message,
-            to: this.props.chat.id,
-            from: this.props.user.auth.id,
-            sentAt: Date.now(),
-            _id: uuid4()
-        }        
-        this.setState(() => ({
-            message: ''
-        }))
-        
-        axios.post("/api/chat/messages", formData, {
-                headers: {
-                    'x-auth': this.props.user.auth.token
-                }
-            })
-            .then(res => {
-                this.props.dispatch(sendMessage(res.data))
-                this.props.socket.emit("sendMessage", {
-                    from: this.props.user.auth.id,
-                    to: this.props.chat.id,
-                    message: res.data
+        if(this.state.message){
+            const formData = {
+                message: this.state.message,
+                to: this.props.chat.id,
+                from: this.props.user.auth.id,
+                sentAt: Date.now(),
+                _id: uuid4()
+            }        
+            this.setState(() => ({
+                message: ''
+            }))            
+            axios.post("/api/chat/messages", formData, {
+                    headers: { 'x-auth': this.props.user.auth.token }
                 })
-                this.props.socket.emit("typing", {
-                    time: new Date(),
-                    from: this.props.user.auth.id,
-                    to: this.props.chat.id,
+                .then(res => {
+                    this.props.dispatch(sendMessage(res.data))
+                    this.props.socket.emit("sendMessage", {
+                        from: this.props.user.auth.id,
+                        to: this.props.chat.id,
+                        message: res.data
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }
+
+    componentDidMount(){
+        const { socket, user: { auth: { id }}, chat } = this.props
+        const typing = setInterval(() => {
+            if(this.state.message !== ''){
+                socket.emit("typing", {
+                    from: id,
+                    to: chat.id,
+                    status: true
+                })
+            }else{
+                socket.emit("typing", {
+                    from: id,
+                    to: chat.id,
                     status: false
                 })
-            })
-            .catch(err => {
-                console.log(err)
-            })
+            }
+        }, 2000)
+        this.setState({ typing })
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.state.typing)
     }
 
     render(){

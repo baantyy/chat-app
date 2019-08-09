@@ -25,11 +25,7 @@ class rightTop extends React.Component{
     }
 
     render(){
-        const { typing: { status, time }} = this.state
-        const timeDiff = status ? (new Date() - new Date(time))/1000 : 0
-        let typing = status ? timeDiff > 5 ? false : true : false
-        console.log(typing, timeDiff)
-
+        const { typing: { status }} = this.state
         return (
             <div className="top themeBg">
                 <button className="backButton" onClick={() => {
@@ -41,7 +37,7 @@ class rightTop extends React.Component{
                 <div className="menu">
                     <div className="name">
                         <h4>{ this.props.chat.fullname }</h4>
-                        <p>{ typing ? 'typing...' : '...' }</p>
+                        <p>{ status ? 'typing...' : '...' }</p>
                     </div>
                     <div>
                         <button className="dropdown">
